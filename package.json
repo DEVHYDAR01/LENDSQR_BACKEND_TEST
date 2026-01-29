@@ -1,12 +1,22 @@
 {
   "name": "lendsqr_backend_test",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Wallet service for Demo Credit mobile lending app",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:make": "knex migrate:make",
+    "seed:run": "knex seed:run",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["lendsqr", "wallet", "lending", "backend"],
+  "author": "devhydar",
   "license": "ISC"
 }

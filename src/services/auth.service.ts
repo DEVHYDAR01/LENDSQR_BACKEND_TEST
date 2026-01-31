@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { env } from '../config/env';
 import { User } from '../types';
 import { UnauthorizedError } from '../utils/errors';
+import userService from './user.service';
 
 interface TokenPayload {
   userId: string;
@@ -9,6 +10,22 @@ interface TokenPayload {
 }
 
 export class AuthService {
+  async login(email: string, password: string): Promise<{ user: User; token: string }> {
+    try {
+      const user = await userService.getUserByEmail(email);
+      const isValid = await userService.validatePassword(user, password);
+      
+      if (!isValid) {
+        throw new UnauthorizedError('Invalid credentials');
+      }
+
+      const token = this.generateToken(user);
+      return { user, token };
+    } catch (error) {
+      throw new UnauthorizedError('Invalid credentials');
+    }
+  }
+
   generateToken(user: User): string {
     const payload: TokenPayload = {
       userId: user.id,

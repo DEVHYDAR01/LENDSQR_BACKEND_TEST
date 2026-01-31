@@ -1,10 +1,15 @@
-import { User } from './index';
+export interface TokenPayload {
+  userId: string;
+  email: string;
+}
 
 declare global {
   namespace Express {
     interface Request {
-      user?: User;
+      user?: TokenPayload;
       requestId?: string;
     }
   }
 }
+
+export {};

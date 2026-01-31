@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import { env } from './config/env';
 import { errorHandler } from './middleware/errorHandler';
+import routes from './routes';
 
 const app = express();
 
@@ -30,9 +31,7 @@ app.get('/health', (_, res) => {
 });
 
 // API routes
-app.get(`/api/${env.API_VERSION}`, (_, res) => {
-  res.json({ message: 'Lendsqr Wallet API', version: env.API_VERSION });
-});
+app.use(`/api/${env.API_VERSION}`, routes);
 
 // Error handling
 app.use(errorHandler);

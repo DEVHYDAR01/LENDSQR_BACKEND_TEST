@@ -1,9 +1,9 @@
 import knex, { Knex } from 'knex';
-import config from '../../knexfile';
+import knexConfig from '../../knexfile';
 import { logger } from '../utils/logger';
 
 const environment = process.env.NODE_ENV || 'development';
-const dbConfig = config[environment];
+const dbConfig = knexConfig[environment];
 
 class Database {
   private static instance: Knex;

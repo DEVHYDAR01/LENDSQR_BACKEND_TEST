@@ -1,0 +1,38 @@
+export const TRANSACTION_TYPES = {
+  CREDIT: 'credit',
+  DEBIT: 'debit',
+} as const;
+
+export const TRANSACTION_CATEGORIES = {
+  FUNDING: 'funding',
+  TRANSFER: 'transfer',
+  WITHDRAWAL: 'withdrawal',
+} as const;
+
+export const TRANSACTION_STATUS = {
+  PENDING: 'pending',
+  COMPLETED: 'completed',
+  FAILED: 'failed',
+} as const;
+
+export const ERROR_CODES = {
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  UNAUTHORIZED: 'UNAUTHORIZED',
+  FORBIDDEN: 'FORBIDDEN',
+  NOT_FOUND: 'NOT_FOUND',
+  CONFLICT: 'CONFLICT',
+  INSUFFICIENT_FUNDS: 'INSUFFICIENT_FUNDS',
+  BLACKLISTED_USER: 'BLACKLISTED_USER',
+  INTERNAL_ERROR: 'INTERNAL_ERROR',
+} as const;
+
+export const HTTP_STATUS = {
+  OK: 200,
+  CREATED: 201,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  CONFLICT: 409,
+  INTERNAL_ERROR: 500,
+} as const;

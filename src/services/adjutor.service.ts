@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { logger } from '../utils/logger';
+import { env } from '../config/env';
 
 interface AdjutorResponse {
   status: string;
@@ -17,21 +18,21 @@ interface AdjutorResponse {
 }
 
 class AdjutorService {
-  private readonly baseUrl = 'https://adjutor.lendsqr.com/v2/verification/karma';
-  private readonly token = process.env.LENDSQR_ADJUTOR_TOKEN;
+  private readonly baseUrl = env.ADJUTOR_API_URL;
+  private readonly apiKey = env.ADJUTOR_API_KEY;
 
   async checkBlacklist(identity: string): Promise<boolean> {
     try {
-      if (!this.token) {
-        logger.warn('Lendsqr Adjutor token not configured, skipping blacklist check');
+      if (!this.apiKey || !this.baseUrl) {
+        logger.warn('Lendsqr Adjutor API not configured, skipping blacklist check');
         return false;
       }
 
       const response: AxiosResponse<AdjutorResponse> = await axios.get(
-        `${this.baseUrl}/${identity}`,
+        `${this.baseUrl}/karma/${identity}`,
         {
           headers: {
-            'Authorization': `Bearer ${this.token}`,
+            'Authorization': `Bearer ${this.apiKey}`,
             'Content-Type': 'application/json'
           },
           timeout: 10000

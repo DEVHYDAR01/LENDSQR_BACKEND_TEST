@@ -2,7 +2,7 @@
 
 A robust backend wallet service for Demo Credit mobile lending app, built with Node.js, TypeScript, and MySQL.
 
-## Table of Contents
+## Table of Content
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)

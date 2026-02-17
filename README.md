@@ -45,7 +45,7 @@ This wallet service provides essential financial operations for a mobile lending
 - **Security**: Helmet, bcryptjs
 - **Containerization**: Docker & Docker Compose
 
-## Architecture
+## Architectures
 
 The application follows a layered architecture pattern:
 
